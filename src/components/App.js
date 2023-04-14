@@ -10,8 +10,8 @@ function App() {
     React.useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
-  const [isEditConfirmationPopupOpen, setEditConfirmationPopupOpen] =
-    React.useState(false);
+  // const [isEditConfirmationPopupOpen, setEditConfirmationPopupOpen] =
+  //   React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
 
   function handleEditAvatarClick() {
@@ -26,9 +26,9 @@ function App() {
     setAddPlacePopupOpen(!isAddPlacePopupOpen);
   }
 
-  function handleDeleteCardClick() {
-    setEditConfirmationPopupOpen(!isEditConfirmationPopupOpen);
-  }
+  // function handleDeleteCardClick() {
+  //   setEditConfirmationPopupOpen(!isEditConfirmationPopupOpen);
+  // }
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -140,7 +140,7 @@ function App() {
 
       <PopupWithForm
         name={"confirmation"}
-        isOpen={isEditConfirmationPopupOpen}
+        //isOpen={isEditConfirmationPopupOpen}
         onClose={closeAllPopups}
         title={"Вы уверены?"}
         titleBtn={"Да"}
