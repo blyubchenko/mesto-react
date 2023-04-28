@@ -50,20 +50,14 @@ class Api {
       }),
     }).then(this._processingServerResponse);
   }
-  //поставить лайк
-  addLike(cardId) {
+  //добавить/удалить лайк
+  changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this.cohotr}/cards/${cardId}/likes`, {
-      method: "PUT",
+      method: `${isLiked ? "PUT" : "DELETE"}`,
       headers: this.token
     }).then(this._processingServerResponse);
   }
-  //снятие лайка
-  disLike(cardId) {
-    return fetch(`${this.cohotr}/cards/${cardId}/likes`, {
-      method: "DELETE",
-      headers: this.token
-    }).then(this._processingServerResponse);
-  }
+  
   //удаление карточки
   cardDelete(cardId) {
     return fetch(`${this.cohotr}/cards/${cardId}`, {
