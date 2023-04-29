@@ -1,9 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import {
-  CardsContext,
-  CurrentUserContext,
-} from "../blocks/contexts/CurrentUserContext";
+import {CurrentUserContext} from "../blocks/contexts/CurrentUserContext";
 
 function Main({
   onEditAvatar,
@@ -12,9 +9,9 @@ function Main({
   onCardClick,
   onCardLike,
   onCardDelete,
+  cards
 }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const cards = React.useContext(CardsContext);
 
   return (
     <main className="content">

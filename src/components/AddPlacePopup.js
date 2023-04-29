@@ -22,12 +22,12 @@ function AddPlacePopup(props) {
 
   return (
     <PopupWithForm
-      name={"photo"}
+      name="photo"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      title={"Новое место"}
-      size={"large"}
-      titleBtn={"Создать"}
+      title="Новое место"
+      size="large"
+      titleBtn="Создать"
       onSubmit={handleSubmit}
       isLoading={props.isLoading}
     >

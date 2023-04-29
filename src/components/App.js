@@ -2,24 +2,21 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import ImagePopup from "./ImagePopup";
-import React from "react";
+import React, { useState, useEffect } from 'react'
 import api from "../utils/api";
-import {
-  CardsContext,
-  CurrentUserContext,
-} from "../blocks/contexts/CurrentUserContext";
+import { CurrentUserContext} from "../blocks/contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import ActionConfirmationPopup from "./ActionConfirmationPopup";
 
 function App() {
-  const [currentUser, setCurrentUser] = React.useState({});
-  const [cards, setCards] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-  const [cardToDelete, setCardToDelete] = React.useState({});
+  const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [cardToDelete, setCardToDelete] = useState({});
 
-  React.useEffect(() => {
+  useEffect(() => {
     api
       .getAllData()
       .then((res) => {
@@ -33,12 +30,12 @@ function App() {
   }, []);
 
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
-    React.useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
+    useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isEditConfirmationPopupOpen, setEditConfirmationPopupOpen] =
-    React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
+    useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
 
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(!isEditAvatarPopupOpen);
@@ -139,7 +136,6 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <CardsContext.Provider value={cards}>
         <div className="page">
           <Header />
           <Main
@@ -149,6 +145,7 @@ function App() {
             onCardClick={handleCardClick}
             onCardLike={handleCardLike}
             onCardDelete={handleDeleteCardClick}
+            cards={cards}
           />
           <Footer />
           <EditProfilePopup
@@ -162,7 +159,7 @@ function App() {
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
             isLoading={loading}
-            inputValue={""}
+            inputValue=""
           />
 
           <EditAvatarPopup
@@ -181,7 +178,6 @@ function App() {
 
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         </div>
-      </CardsContext.Provider>
     </CurrentUserContext.Provider>
   );
 }

@@ -9,12 +9,12 @@ function ActionConfirmationPopup(props) {
   }
   return (
     <PopupWithForm
-      name={"confirmation"}
+      name="confirmation"
       isOpen={props.isOpen}
       onClose={props.onClose}
-      title={"Вы уверены?"}
-      titleBtn={"Да"}
-      size={"small"}
+      title="Вы уверены?"
+      titleBtn="Да"
+      size="small"
       onSubmit={handleSubmit}
     />
   );
